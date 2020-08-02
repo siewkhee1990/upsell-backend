@@ -6,7 +6,7 @@ const listingSchema = new mongoose.Schema({
         description: { type: String },
         image_url: {type: String},
         quantity: { type: Number },
-        price: {type: mongoose.Types.Decimal128 },
+        price: {type: mongoose.Types.Decimal128},
         meetup: {type: String},
         condition: {type: String},
         created_date: { type: Date, default: Date.now },
