@@ -5,13 +5,13 @@ const PORT = process.env.PORT || 3002;
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser')
-
+const Front_End_URL = process.env.Front_End_URL || 'http://localhost:3000'
 
 require('./db');
 
 
 //middlewares 
-app.use(cors({origin: 'http://localhost:3000' , credentials: true }));
+app.use(cors({origin: Front_End_URL , credentials: true }));
 app.use(express.urlencoded({ extended: false })); // extended: false - does not allow nested objects in query strings
 app.use(express.json());
 app.use(cookieParser());
