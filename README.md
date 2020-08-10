@@ -15,7 +15,9 @@ developed by Helen, Shi Jie & Danny
 
 
 ## Project Demo
-* https://upsell-frontend.herokuapp.com/
+* https://upsell-frontend.herokuapp.com
+* https://github.com/siewkhee1990/upsell-backend
+* https://github.com/siewkhee1990/upsell-frontend
 
 
 ## Project motivation
