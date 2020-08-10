@@ -6,12 +6,13 @@ const passportConfig = require('../passport');
 const JWT = require('jsonwebtoken');
 const Listings = require('../models/listings');
 const Orders = require('../models/orders');
+const secretKey = process.env.SECRET_KEY || "upsell" ;
 
 const signToken = userID => {
     return JWT.sign({
-        iss: "superdanny",
+        iss: secretKey,
         sub: userID
-    }, "superdanny", { expiresIn: "1h" })
+    }, secretKey, { expiresIn: "1h" })
 }
 
 //find all route
@@ -64,14 +65,14 @@ router.post('/signup', (req, res) => {
 })
 
 router.post('/create', passport.authenticate('jwt', { session: false }), (req, res) => {
-    console.log('reqbody' + req.body)
+    // console.log('reqbody' + req.body)
     const listing = new Listings(req.body);
-    console.log('listing' + listing)
+    // console.log('listing' + listing)
     listing.save(err => {
         if (err)
             res.status(500).json({ message: { msgBody: "Error has occured", msgError: true } });
         else {
-            console.log('requser' + req.user)
+            // console.log('requser' + req.user)
             listing.userID = req.user;
             listing.save(err => {
                 if (err)
@@ -119,8 +120,8 @@ router.post(
                 }
                 const { _id, username, wallet } = req.user; //success case
                 const token = signToken(_id);
-                res.cookie('access_token', token, { httpOnly: true, sameSite: true });
-                res.status(200).json({ isAuthenticated: true, user: { username, _id, wallet } });
+                res.cookie('access_token', token, { httpOnly: true });
+                res.status(200).json({ isAuthenticated: true, user: { username, _id, wallet, token } });
             }
             )
         })(req, res, next)

@@ -8,6 +8,8 @@ module.exports = (app) => {
     app.use('/users', usersController);
     const listingsController = require('../controllers/listings.js');
     app.use('/listings', listingsController);
+    const ordersController = require('../controllers/orders.js');
+    app.use('/orders', ordersController);
 }
 
 
