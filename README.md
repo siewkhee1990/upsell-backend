@@ -64,6 +64,7 @@ This project contains 3 parts:
 
 Project structure
 
+```
 project
  └── upsell-backend (server)
    └── controller   — Storing APIs (GET, POST, PUT, DELETE)
@@ -89,7 +90,7 @@ project
      |__ AuthContext.js - centralized users' information
      |__ context.js - centralized listings' information
      |__ index.js
-
+```
 
 
 ## Challenges
